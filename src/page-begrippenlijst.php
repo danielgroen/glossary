@@ -1,0 +1,47 @@
+<?php
+/*
+ * Template Name: Begrippenlijst
+ */
+
+use Jacket\misc\Fetch;
+use Jacket\Blocks;
+
+get_header();
+
+the_post();
+?>
+
+<main>
+  <?php
+
+  $visible_terms = get_field('visible_categories');
+
+
+  $taxonomy = get_terms(array(
+    'taxonomy' => 'glossary_category',
+    'hide_empty' => false,
+  ));
+  foreach ($taxonomy as &$term) {
+    if (is_array($visible_terms) && in_array($term->term_id, $visible_terms)) {
+      echo ('<br><br>');
+      echo ($term->name);
+      echo ('<br>');
+
+      $posts = Fetch::get_posts_by_taxonomy_id($term->term_id);
+      foreach ($posts as &$post) {
+        echo ('<a href="' . get_post_permalink($post->id) . '">' . $post->post_title . '</a>');
+        echo ('<br>');
+      }
+    };
+  }
+  ?>
+</main>
+<?php
+$blogs = new Blocks\Blogs([
+  // 'title' => 'title2',
+  // 'title' => the_field('test'),
+]);
+
+$blogs->render();
+
+get_footer();
