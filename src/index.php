@@ -1,35 +1,33 @@
 <?php
 
-// load templates name in page attributes
-function glossary_add_page_template($templates)
-{
-  $templates['page-begrippenlijst.php'] = 'Begrippenlijst';
-  return $templates;
-}
-add_filter('theme_page_templates', 'glossary_add_page_template');
 
-// load page templates
-function vive_ship_load_plugin_template($template)
-{
-  if (get_page_template_slug() === 'page-begrippenlijst.php') {
-    if ($theme_file = locate_template(array('page-begrippenlijst.php'))) {
-      $template = $theme_file;
-    } else {
-      $template = plugin_dir_path(__DIR__) . 'templates/page-begrippenlijst.php';
-    }
-  }
-  if ($template == '') {
-    throw new \Exception('No template found');
-  }
-  return $template;
-}
+
+
+// REGISTER PAGE TEMPLATE HERE
+
+/*
+ * Set single post
+ */
+// add_filter('template_include', 'glossary_templates');
+// function glossary_templates($template)
+// {
+
+//   $post_type = 'begrippen';
+
+//   if (is_post_type_archive($post_type) && file_exists(plugin_dir_path(__DIR__) . "src/templates/archive-$post_type.php")) {
+//     $template = plugin_dir_path(__DIR__) . "src/templates/archive-$post_type.php";
+//   }
+
+//   if (is_singular($post_type) && file_exists(plugin_dir_path(__DIR__) . "src/templates/single-$post_type.php")) {
+//     $template = plugin_dir_path(__DIR__) . "src/templates/single-$post_type.php";
+//   }
+
+//   return $template;
+// }
 
 /**
  * Adding custom post types
  **/
-
-// BEGRIPPEN
-
 function wporg_custom_post_type()
 {
   $cpt_name = 'Begrippen';
