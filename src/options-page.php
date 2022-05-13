@@ -18,11 +18,11 @@ function add_action_links($actions)
  * side menu
  */
 add_action('admin_menu', function () {
-  add_options_page('Begrippen', 'Begrippen', 'manage_options', 'begrippen', 'render_SFP_settings_page');
+  add_options_page('Begrippen', 'Begrippen', 'manage_options', 'begrippen', 'render_glossary_settings_page');
 });
 
 
-function render_SFP_settings_page()
+function render_glossary_settings_page()
 {
 ?>
   <h2>Begrippen plugin Settings</h2>
