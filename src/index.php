@@ -84,7 +84,7 @@ function create_begrippen_taxonomy()
     'menu_name' => __('Begrip Categorieën'),
   );
 
-  register_taxonomy('glossary_category', ['begrippen', 'blog'], array(
+register_taxonomy('glossary_category', ['begrippen', 'blog', 'page'], array(
     'hierarchical' => false,
     'meta_box_cb' => 'post_categories_meta_box',
     'labels' => $labels,
