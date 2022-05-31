@@ -60,7 +60,7 @@ function wporg_custom_post_type()
     "capability_type" => "post",
     "map_meta_cap" => true,
     "hierarchical" => false,
-    "rewrite" => ["slug" => strtolower($cpt_name), "with_front" => true],
+    "rewrite" => ["slug" => 'wat-is', "with_front" => true],
     "query_var" => true,
     // "taxonomies"  => array("category"),
   ]);
@@ -84,7 +84,7 @@ function create_begrippen_taxonomy()
     'menu_name' => __('Begrip Categorieën'),
   );
 
-register_taxonomy('glossary_category', ['begrippen', 'blog', 'page'], array(
+  register_taxonomy('glossary_category', ['begrippen', 'blog', 'page'], array(
     'hierarchical' => false,
     'meta_box_cb' => 'post_categories_meta_box',
     'labels' => $labels,
