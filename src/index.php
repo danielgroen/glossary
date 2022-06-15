@@ -33,6 +33,7 @@ function wporg_custom_post_type()
   $cpt_name = 'Begrippen';
   $cpt_icon = 'dashicons-book';
   $cpt_singular = 'Begrip';
+  $slug = 'wat-is';
 
   register_post_type($cpt_name, [
     "label" => __($cpt_name, "custom-post-type-ui"),
@@ -46,9 +47,9 @@ function wporg_custom_post_type()
     'menu_position' =>  4,
     "description" => "",
     "public" => true,
-    'supports' => array("title", "editor", "author", "thumbnail", "excerpt", "trackbacks", "custom-fields", "comments", "revisions", "page-attributes", "post-formats"),
     "publicly_queryable" => true,
     "show_ui" => true,
+    'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
     "show_in_rest" => true,
     "rest_base" => "",
     "rest_controller_class" => "WP_REST_Posts_Controller",
@@ -60,7 +61,7 @@ function wporg_custom_post_type()
     "capability_type" => "post",
     "map_meta_cap" => true,
     "hierarchical" => false,
-    "rewrite" => ["slug" => 'wat-is', "with_front" => true],
+    "rewrite" => ["slug" => $slug, "with_front" => true],
     "query_var" => true,
     // "taxonomies"  => array("category"),
   ]);
@@ -95,6 +96,3 @@ function create_begrippen_taxonomy()
     'rewrite' => array('slug' => 'Begrip'),
   ));
 }
-
-// End begrippen
-add_theme_support('post-thumbnails');
